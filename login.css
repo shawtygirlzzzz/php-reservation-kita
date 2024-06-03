@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Maintain vertical alignment for all contents */
+    align-items: flex-start; /* Align children to the left */
+    justify-content: center; /* Center children vertically */
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    display: flex;
+    align-items: center; /* To align the text and icon */
+    margin-right: 30px;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #333;
+    display: flex;
+    align-items: center; /* To align the text and icon */
+    margin-right: 30px;
+    padding: 20px;
+}
+
+.copyright{
+    font-size: 18px;
+    color: #333;
+    display: flex;
+    align-items: center; /* To align the text and icon */
+    margin-right: 30px;
+    padding: 20px;
+}
+
+.login-icon {
+    margin-left: 140px; /* Adjusted space between text and icon */
+    width: 24px; /* Set a specific size for the icon */
+    height: 24px;
+}
+
+.login-form {
+    
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.login-form label {
+    margin-bottom: 5px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.login-form a {
+
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox input {
+ 
+    margin-right: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color:lightgrey;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Positioned to overlap the body */
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.illustration img {
+    max-width: 100%;
+    height: auto;
+} 
