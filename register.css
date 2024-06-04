@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    margin-left: 170px;
+    margin-right: 170px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+img, h1 {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+h1 {
+    color: black;
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+
+h3 {
+    color: black;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.formcontent {
+    display: flex;
+}
+
+.formitem {
+    margin-bottom: 15px;
+    flex: 1;
+    margin-right: 220px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.position {
+    display: flex;
+    flex-direction: row;
+}
+
+.position label {
+    margin-right: 40px;
+}
+
+.position input[type="radio"] {
+    margin-right: 5px;
+}
+
+
+input[type=text], input[type=email], input[type=password], textarea {
+    width: 170%;
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+select {
+    width: 107%;
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+.select > input[type=text], input[type=time] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+textarea {
+    width: 170%;
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+#createAccount {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px; 
+    background-color: pink; 
+    color: black;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#createAccount:hover {
+    background-color: darkmagenta;
+    color: white;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #999;
+}
