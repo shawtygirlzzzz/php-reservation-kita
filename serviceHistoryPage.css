@@ -1,0 +1,105 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.wrapper {
+    margin: auto;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    font-family: 'Times New Roman', Times, serif;
+    color: #000000;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+header .back-link {
+    color: #000000;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #333333;
+}
+
+.heading-banner{
+    background-color: lightgray; 
+    padding: 3px;
+    margin-bottom: 10px;
+    width: 100%; 
+    text-align: center;
+}
+.status-banner {
+    background-color: #92e77db7;
+    margin-bottom: 10px;
+    width: fit-content; 
+    margin-left: 150px;
+}
+
+.service-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info, .service-summary {
+    flex-basis: 48%;
+    margin-left: 150px;
+}
+
+.service-summary {
+    background-color: white;
+    padding: 10px;
+}
+
+.total-cost p, .status-options p {
+    margin: 10px 0;
+}
+
+.box{
+    background-color: lightgray;
+    box-shadow: lightgray;
+    width: 400px; 
+    padding: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.status-options p {
+    margin-left: 20px;
+}
+
+.status-options p:nth-child(4) {
+    color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .service-details {
+        flex-direction: column;
+    }
+
+    .customer-info, .service-summary {
+        flex-basis: 100%;
+    }
+
+    .service-summary {
+        margin-top: 20px;
+    }
+}

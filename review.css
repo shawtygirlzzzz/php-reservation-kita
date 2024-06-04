@@ -1,0 +1,256 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  align-items: center;
+}
+  
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-family: 'Times New Roman', Times, serif;
+}
+  
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.breadcrumb {
+  text-decoration: none;
+  color: #333;
+  margin: 0 5px;
+}
+  
+.breadcrumb-separator {
+  color: #333;
+}
+  
+.breadcrumb.active {
+  color: #e60000; /* Highlight the active page */
+}
+  
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.back-arrow {
+  font-size: 24px;
+  text-decoration: none;
+  margin-right: 10px;
+  color: #333;
+}
+  
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+  
+.main-nav ul li {
+  padding: 0 10px;
+}
+  
+.main-nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+  
+.main-nav ul li a:hover {
+  color: #5cb85c;
+}
+  
+.header-contact a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  background-color: #f4f4f4;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+  
+.header-contact a:hover {
+  color: #5cb85c;
+}
+  
+.shop-name-container{
+  background: #ececec;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family:'Times New Roman', Times, serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+}
+  
+.review-summary h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+  
+.average-rating {
+  background: lightgrey;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 50px;
+  width: 600px;
+  height: 200px;
+    
+}
+
+.summary-container{
+  margin-left: 100px;
+}
+
+.rating-value {
+  font-size: 2em;
+  color: #333;
+  font-weight: 900;
+}
+  
+.rating-header{
+  font-weight: 900;
+}
+
+.rating-stars {
+  color: #ffd700; /* gold color for stars */
+}
+  
+.total-reviews {
+  display: block;
+  color: #777;
+  margin: 5px 0;
+}
+  
+.write-review-btn {
+  background-color: lightpink;
+  color:black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+  
+.write-review-btn:hover {
+  background-color: #45a049;
+}
+  
+.individual-reviews .review {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+  
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+  
+.reviewer-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+  
+.reviewer-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+  
+.image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* maintain 1:1 ratio */
+  cursor: pointer; /* change cursor on hover */
+}
+
+.review-rating {
+  color: #ffd700; /* gold color for stars */
+}
+  
+.review-text {
+  color: #555;
+}
+
+.popup-window {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+  
+.popup-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+  
+.popup-content h2 {
+  text-align: center;
+}
+
+form button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  margin-left: 110px;
+  margin-top: 50px;
+}
+
+form label {
+  margin-left: 20px;
+}
+
+textarea, select, input[type=text] {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  margin-left: 20px;
+}
+
+  
