@@ -8,9 +8,9 @@
 </head>
 <body>
     <header>
-            <h1>F4</h1>
+        <h1>F4</h1>
         <nav>
-            <a href="storeSearching.html"><button class="nav-button">Stores</button></a>
+            <a href="storeSearching.php"><button class="nav-button">Stores</button></a>
             <a href="service.html"><button class="nav-button">Services</button></a>
             <a href="contact.html"><button class="nav-button">Contact Us</button></a>
         </nav>
@@ -24,15 +24,34 @@
         </div>
     </header>
     <main>
+        <?php
+            // Default values
+            $name = "FairyTale Tailor Shop";
+            $address = "7, Jalan Komersial TAKH 2, Taman Ayer Keroh Heights, 76450 Ayer Keroh Melaka";
+            $contactNo = "+60123456789";
+
+            // Check if form has been submitted
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST['newName'])) {
+                    $name = $_POST['newName'];
+                }
+                if (isset($_POST['newAddress'])) {
+                    $address = $_POST['newAddress'];
+                }
+                if (isset($_POST['newContactNo'])) {
+                    $contactNo = $_POST['newContactNo'];
+                }
+            }
+        ?>
         <div class="main-content">
             <div class="left-side">
                 <img src="Image/profilePicture.png" alt="Profile Picture" class="profile-pic">
                 <div class="shop-info">
-                    <h2 id="name">FairyTale Tailor Shop</h2>
+                    <h2 id="name"><?php echo htmlspecialchars($name); ?></h2>
                     <p><strong>Address:</strong></p>
-                    <p id="address">7, Jalan Komersial TAKH 2, Taman Ayer Keroh Heights, 76450 Ayer Keroh Melaka</p>
+                    <p id="address"><?php echo htmlspecialchars($address); ?></p>
                     <p><strong>Contact Number:</strong></p>
-                    <p id="contactNo">+60123456789</p>
+                    <p id="contactNo"><?php echo htmlspecialchars($contactNo); ?></p>
                     <p><strong>Active:</strong> 14 minutes ago</p>
                     <p><strong>Products:</strong> 4</p>
                     <p><strong>Followers:</strong> 30</p>
@@ -46,28 +65,27 @@
                     <button class="edit-profile-btn" onclick="edit()">Edit My Profile</button>
                 </div>
             </div>
-        
+
             <div class="right-side">
-                <div class = "order-box">
+                <div class="order-box">
                     <h3>The order has been <span class="completed">completed</span></h3>
                     <h3>Customer details:</h3>
                     <p><strong>Name:</strong> Fareen Nathrah</p>
                     <p><strong>Method:</strong> Walkin </p>
                     <p><strong>Preferred Date:</strong> 14/3/2024</p>
                     <p><strong>Preferred Time:</strong> 10.00AM</p>
-                    
                     <a href="serviceHistoryPageTailor.html"><button class="see-more-btn">See More</button></a>
                 </div>
-                <div class = "order-box">
+                <div class="order-box">
                     <h3>The order is <span class="processing">processing</span></h3>
                     <h3>Customer details:</h3>
-                        <p><strong>Name:</strong> Hor Ying Huai</p>
-                        <p><strong>Method:</strong> Doorstep</p>
-                        <p><strong>Preferred Date:</strong> 24/3/2024</p>
-                        <p><strong>Preferred Time:</strong> 11.00AM</p>
-                        <a href="serviceHistoryPageTailor.html"><button class="see-more-btn">See More</button></a>
+                    <p><strong>Name:</strong> Hor Ying Huai</p>
+                    <p><strong>Method:</strong> Doorstep</p>
+                    <p><strong>Preferred Date:</strong> 24/3/2024</p>
+                    <p><strong>Preferred Time:</strong> 11.00AM</p>
+                    <a href="serviceHistoryPageTailor.html"><button class="see-more-btn">See More</button></a>
                 </div>
-                <div class = "order-box">
+                <div class="order-box">
                     <h3>The order has been <span class="cancelled">cancelled</span></h3>
                     <h3>Customer details:</h3>
                     <p><strong>Name:</strong> Alicia Goh</p>
@@ -78,23 +96,23 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="editWindow" class="popup">
             <div class="popup-content">
                 <h2>Edit Profile</h2>
-                <form>
+                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <label for="newName">Name:</label>
-                    <input type="text" id="newName" name="Name"><br><br>
+                    <input type="text" id="newName" name="newName" value="<?php echo htmlspecialchars($name); ?>"><br><br>
                     <label for="newAddress">Address:</label>
-                    <textarea id="newAddress" name="Address" rows="5"></textarea><br><br>
+                    <textarea id="newAddress" name="newAddress" rows="5"><?php echo htmlspecialchars($address); ?></textarea><br><br>
                     <label for="newContactNo">Contact Number:</label>
-                    <input type="text" id="newContactNo" name="Contact Number"><br><br>
-                    <button type="button" onclick="save()">Save Changes</button>
-                    <button type="close" onclick="close()">Cancel</button>
+                    <input type="text" id="newContactNo" name="newContactNo" value="<?php echo htmlspecialchars($contactNo); ?>"><br><br>
+                    <button type="submit">Save Changes</button>
+                    <button type="button" onclick="close()">Cancel</button>
                 </form>
             </div>
         </div>
-        
+
         <script>
             function edit() {
                 var popup = document.getElementById("editWindow");
@@ -104,18 +122,6 @@
             function close() {
                 var popup = document.getElementById("editWindow");
                 popup.style.display = "none";
-            }
-
-            function save() {
-                var nName = document.getElementById("newName").value;
-                var nAddress = document.getElementById("newAddress").value;
-                var nContactNo = document.getElementById("newContactNo").value;
-
-                document.getElementById("name").innerHTML = nName;
-                document.getElementById("address").innerHTML = nAddress;
-                document.getElementById("contactNo").innerHTML = nContactNo;
-
-                close();
             }
         </script>
     </main>
