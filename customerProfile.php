@@ -3,6 +3,8 @@
 <head>
     <title>Order Details</title>
     <link rel="stylesheet" href="customerProfile.css">
+    <link rel="stylesheet" type="text/css" href="general.css">
+    
 </head>
 <body>
     <header>
