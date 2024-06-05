@@ -6,10 +6,10 @@
     <title>Service History</title>
     <link rel="stylesheet" href="serviceHistoryPage.css">
 </head>
-    <body>
+<body>
     <div class="wrapper">
         <header>
-            <a href="customerProfile.html" class="back-link">&#8592;</a>
+            <a href="customerProfile.php" class="back-link">&#8592;</a>
             <h1>F4</h1>
         </header>
         <main>
@@ -23,7 +23,7 @@
             <section class="service-details">
                 <div class="info">
                     <p><strong>Shop name:</strong> FairyTale Shop</p>
-                    <p><strong>Address:</strong>No 2, Jalan Bahagia 3, Taman Damansara, 76777 Kuala Lumpur, Malaysia.</p>
+                    <p><strong>Address:</strong> No 2, Jalan Bahagia 3, Taman Damansara, 76777 Kuala Lumpur, Malaysia.</p>
                     <p><strong>Service Type:</strong> Repairs/Alteration</p>
                     <p><strong>Method:</strong> Doorstep</p>
                     <p><strong>Date:</strong> 14/03/2024</p>
@@ -31,28 +31,26 @@
                     <p>Color - Red</p>
                     <p>Fabric: Cotton</p>
                     <p><strong>Your Rating:</strong> &#9733; &#9733; &#9733; &#9734; &#9734;</p>
-                    
                 </div>
-                    <aside class="service-summary">
-                        <div class = box>
-                            <p><strong>Confirmation Number:</strong> 123456789123456</p>
-                        </div>
+                <aside class="service-summary">
+                    <div class="box">
+                        <p><strong>Confirmation Number:</strong> 123456789123456</p>
+                    </div>
 
-                        <div>
-                            <p><strong><a href="#">Book Again?</strong></a></p>
-                        </div>
+                    <div>
+                        <p><strong><a href="#">Book Again?</a></strong></p>
+                    </div>
 
-                        <div class = box>
-                            <div class="total-cost">
-                             <h3>Total Cost: RM 2.00</h3>
-                             <p>Reservation Cost: RM 2.00</p>
-                             <p>Travel Fee: RM 0.00</p>
-                            </div>
+                    <div class="box">
+                        <div class="total-cost">
+                            <h3>Total Cost: RM 2.00</h3>
+                            <p>Reservation Cost: RM 2.00</p>
+                            <p>Travel Fee: RM 0.00</p>
                         </div>
-                       
-                    </aside>
-                </div>
+                    </div>
+                </aside>
             </section>
         </main>
-    </body>
+    </div>
+</body>
 </html>
