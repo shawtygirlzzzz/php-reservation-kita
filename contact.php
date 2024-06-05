@@ -3,6 +3,8 @@
 <head>
     <title>Contact Us!</title>
     <link rel="stylesheet" type="text/css" href="contact.css">
+    <link rel="stylesheet" type="text/css" href="general.css">
+    
 </head>
 <body>
     <header>
