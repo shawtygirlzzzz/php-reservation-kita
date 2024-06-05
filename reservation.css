@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .header {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.header h1 {
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+.back-arrow {
+  font-size: 24px;
+  text-decoration: none;
+  margin-right: 10px;
+  color: #333;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+nav ul li {
+    padding: 0 15px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.center{
+  text-align: center;
+}
+.contact a {
+    color: #333;
+    text-decoration: none;
+}
+
+.contact img {
+    vertical-align: middle;
+    margin-right: 20px; 
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+  }
+  h2 {
+    color: #333;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  label {
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+  }
+  input[type="text"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .radio-group {
+    margin: 10px 0;
+  }
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  .button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .button:hover {
+    background-color: #45a049;
+  }
+
+  .form-container {
+    background: white;
+    width: 700px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
