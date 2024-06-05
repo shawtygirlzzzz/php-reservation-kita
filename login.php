@@ -25,7 +25,7 @@
 
         <button type="submit">Login</button>
 
-        <p>Doesn't have an account? <a href="register.html">Sign up here</a></p>
+        <p>Doesn't have an account? <a href="register.php">Sign up here</a></p>
     </form>
     <div class="copyright">
         <p>Copyright 2024 | F4</p>
