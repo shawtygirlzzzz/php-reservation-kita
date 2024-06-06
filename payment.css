@@ -1,0 +1,212 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.header h1 {
+    font-size: 2.5em;
+    margin-left: 20px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+nav ul li {
+    padding: 0 15px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-arrow {
+    font-size: 24px;
+    text-decoration: none;
+    margin-right: 10px;
+    color: #333;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .breadcrumb {
+    text-decoration: none;
+    color: #333;
+    margin: 0 5px;
+  }
+  
+  .breadcrumb-separator {
+    color: #333;
+  }
+  
+  .breadcrumb.active {
+    color: #e60000; /* Highlight the active page */
+  }
+  
+  .profile-icon {
+    font-size: 24px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .total-payment-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f4f4f4; /* Adjust the color to match your screenshot background */
+    border-bottom: 2px solid #e0e0e0; /* Adjust the color to match the separator in your screenshot */
+  }
+  
+  .total-text {
+    font-size: 1.2em; /* Adjust the size as needed */
+    font-weight: bold;
+    color: #333; /* Adjust the color to match your screenshot */
+  }
+  
+  .total-amount {
+    font-size: 1.5em; /* Adjust the size as needed */
+    font-weight: bold;
+    color: #333; /* Adjust the color to match your screenshot */
+  }
+
+  
+  .content-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .payment-section, .reservation-section {
+    flex: 1;
+  }
+  
+  h2 {
+    color: #333;
+    border-bottom: 2px solid #e60000;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .line {
+    
+    border-bottom: 2px solid #757575;
+    /* display: inline-block; */
+    margin-bottom: 10px;
+  }
+  
+  .methods .method {
+    margin-bottom: 10px;
+  }
+  
+  .method a {
+    color: #e60000;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .method.online-banking.active a {
+    text-decoration: underline;
+  }
+  
+  .banks label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .banks input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .voucher-code {
+    margin-top: 20px;
+  }
+  
+  .voucher-code input[type="text"] {
+    border: 1px solid #ccc;
+    padding: 12px;
+    width: 500px;
+  }
+  
+  .fees p {
+    margin: 5px 0;
+  }
+  
+  .button {
+    background-color: #F6C9C9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .button:hover {
+    background-color: pink;
+  }
+
+  .buttonselect {
+    background-color: #d9d9d9;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    border: none;
+    font-size:medium;
+    font-weight: 600;
+    cursor: pointer;
+    /* display: block; */
+    width: 25%;
+    /* box-sizing: border-box; */
+  }
+  
+  .buttonselect:hover {
+    background-color: #C65656;
+    /* background-color: #d9d9d9; */
+    color: rgb(255, 255, 255);  
+  }
+  .card {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
