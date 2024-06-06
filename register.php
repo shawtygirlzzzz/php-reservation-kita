@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Registration Page</title>
     <link rel="stylesheet" type="text/css" href="register.css">
 </head>
@@ -12,58 +10,67 @@
     <p></p>
     <h3>Create an Account</h3>
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $firstname = htmlspecialchars($_POST['firstname']);
-        $lastname = htmlspecialchars($_POST['lastname']);
-        $address = htmlspecialchars($_POST['address']);
-        $email = htmlspecialchars($_POST['email']);
-        $password = htmlspecialchars($_POST['password']);
-        $confirmpassword = htmlspecialchars($_POST['confirmpassword']);
-        $phonenumber = htmlspecialchars($_POST['phonenumber']);
-        $servicetype = htmlspecialchars($_POST['servicetype']);
-        $serviceprovided = isset($_POST['serviceprovided']) ? $_POST['serviceprovided'] : [];
-        $licensenumber = htmlspecialchars($_POST['licensenumber']);
-        $storename = htmlspecialchars($_POST['storename']);
-        $starttime = htmlspecialchars($_POST['starttime']);
-        $endtime = htmlspecialchars($_POST['endtime']);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    {
+        $username = $_POST['username'];
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirmpassword = $_POST['confirmpassword'];
+        $phonenumber = $_POST['phonenumber'];
+        $servicetype = $_POST['servicetype'];
+        $serviceprovided = isset($_POST['serviceprovided']) ? $_POST['serviceprovided'] : '';
+        $licensenumber = isset($_POST['licensenumber']) ? $_POST['licensenumber'] : '';
+        $storename = isset($_POST['storename']) ? $_POST['storename'] : '';
+        $starttime = isset($_POST['starttime']) ? $_POST['starttime'] : '';
+        $endtime = isset($_POST['endtime']) ? $_POST['endtime'] : '';
 
-        // Here you can handle the form data, e.g., save it to a database or send an email
-        // For demonstration, we'll just display the data
-        echo "<h3>Registration Details:</h3>";
-        echo "First Name: $firstname<br>";
-        echo "Last Name: $lastname<br>";
+        echo "<h2>Registration Details:</h2>";
+        echo "Username: $username<br>";
+        echo "Name: $name<br>";
         echo "Address: $address<br>";
         echo "Email: $email<br>";
         echo "Phone Number: $phonenumber<br>";
         echo "Service Type: $servicetype<br>";
-        if (!empty($serviceprovided)) {
+        if (!empty($serviceprovided)) 
+        {
             echo "Services Provided: " . implode(", ", $serviceprovided) . "<br>";
         }
-        if (!empty($licensenumber)) {
+
+        if (!empty($licensenumber)) 
+        {
             echo "License Number: $licensenumber<br>";
         }
-        if (!empty($storename)) {
+
+        if (!empty($storename)) 
+        {
             echo "Store Name: $storename<br>";
         }
-        if (!empty($starttime)) {
+
+        if (!empty($starttime)) 
+        {
             echo "Start Time: $starttime<br>";
         }
-        if (!empty($endtime)) {
-            echo "End Time: $endtime<br>";
+
+        if (!empty($endtime)) 
+        {
+            echo "End Time: $endtime<br><br>";
         }
     }
     ?>
-    <form id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+
+    <form id="form" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
         <div class="formcontent">
             <div class="left">
                 <div class="formitem">
-                    <label for="firstname">First Name</label>
-                    <input type="text" id="firstname" name="firstname" required>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
                 </div>
 
                 <div class="formitem">
-                    <label for="lastname">Last Name</label>
-                    <input type="text" id="lastname" name="lastname" required>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
 
                 <div class="formitem">
@@ -230,8 +237,4 @@
         }
     </script>                
 </body>
-</html>
-
-        </script>                
-    </body>
 </html>
