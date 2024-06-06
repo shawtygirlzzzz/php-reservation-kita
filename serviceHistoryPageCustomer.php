@@ -6,51 +6,61 @@
     <title>Service History</title>
     <link rel="stylesheet" href="serviceHistoryPage.css">
 </head>
-<body>
+    <body>
     <div class="wrapper">
         <header>
             <a href="customerProfile.php" class="back-link">&#8592;</a>
-            <h1>F4</h1>
+            <h1><?php echo $orderNumber; ?></h1>
         </header>
         <main>
             <div class="heading-banner">
                 <h1>Service History</h1>
             </div>
             <div class="status-banner">
-                <h2>This order has been completed</h2>
+                <h2><?php echo $orderStatus; ?></h2>
             </div>
 
             <section class="service-details">
                 <div class="info">
-                    <p><strong>Shop name:</strong> FairyTale Shop</p>
-                    <p><strong>Address:</strong> No 2, Jalan Bahagia 3, Taman Damansara, 76777 Kuala Lumpur, Malaysia.</p>
-                    <p><strong>Service Type:</strong> Repairs/Alteration</p>
-                    <p><strong>Method:</strong> Doorstep</p>
-                    <p><strong>Date:</strong> 14/03/2024</p>
+                    <p><strong>Shop name:</strong> <?php echo $shopName; ?></p>
+                    <p><strong>Address:</strong> <?php echo $shopAddress; ?></p>
+                    <p><strong>Service Type:</strong> <?php echo $serviceType; ?></p>
+                    <p><strong>Method:</strong> <?php echo $serviceMethod; ?></p>
+                    <p><strong>Date:</strong> <?php echo $serviceDate; ?></p>
                     <p><strong>Special Request:</strong></p>
-                    <p>Color - Red</p>
-                    <p>Fabric: Cotton</p>
-                    <p><strong>Your Rating:</strong> &#9733; &#9733; &#9733; &#9734; &#9734;</p>
+                    <p>Color - <?php echo $specialRequestColor; ?></p>
+                    <p>Fabric: <?php echo $specialRequestFabric; ?></p>
+                    <p><strong>Your Rating:</strong> 
+                        <?php 
+                        for ($i = 0; $i < $rating; $i++) {
+                            echo "&#9733; ";
+                        }
+                        for ($i = 0; $i < (5 - $rating); $i++) {
+                            echo "&#9734; ";
+                        }
+                        ?>
+                    </p>
                 </div>
                 <aside class="service-summary">
                     <div class="box">
-                        <p><strong>Confirmation Number:</strong> 123456789123456</p>
+                        <p><strong>Confirmation Number:</strong> <?php echo $confirmationNumber; ?></p>
                     </div>
 
                     <div>
-                        <p><strong><a href="#">Book Again?</a></strong></p>
+                        <p><strong><a href="#">Book Again?</strong></a></p>
                     </div>
 
                     <div class="box">
                         <div class="total-cost">
-                            <h3>Total Cost: RM 2.00</h3>
-                            <p>Reservation Cost: RM 2.00</p>
-                            <p>Travel Fee: RM 0.00</p>
+                            <h3>Total Cost: RM <?php echo $totalCost; ?></h3>
+                            <p>Reservation Cost: RM <?php echo $reservationCost; ?></p>
+                            <p>Travel Fee: RM <?php echo $travelFee; ?></p>
                         </div>
                     </div>
                 </aside>
             </section>
         </main>
     </div>
-</body>
+    </body>
 </html>
+
