@@ -29,6 +29,8 @@
 <div class="container">
   <h2><center>Book Now!</h2></center>
   <?php
+  include 'connection.php'; // Include the database connection
+
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $name = htmlspecialchars($_POST['name']);
       $contact = htmlspecialchars($_POST['contact']);
@@ -38,18 +40,23 @@
       $service = htmlspecialchars($_POST['service']);
       $method = htmlspecialchars($_POST['method']);
       $instruction = htmlspecialchars($_POST['instruction']);
+      
+      // Create a unique confirmation number
+      $confirmationNo = uniqid('CONF'); 
 
-      // Here you can handle the form data, e.g., save it to a database or send an email
-      // For demonstration, we'll just display the data
-      echo "<h3>Reservation Details:</h3>";
-      echo "Name: $name<br>";
-      echo "Contact Number: $contact<br>";
-      echo "Preferred Date: $date<br>";
-      echo "Preferred Time: $time<br>";
-      echo "Address: $address<br>";
-      echo "Service Required: $service<br>";
-      echo "Method: $method<br>";
-      echo "Special Instruction: $instruction<br>";
+      // Prepare and bind
+      $stmt = $conn->prepare("INSERT INTO reservations (ConfirmationNo, Name, ContactNo, PreferredDate, PreferredTime, Address, SpecialInstruction, ServiceRequired, Method) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $stmt->bind_param("sssssssss", $confirmationNo, $name, $contact, $date, $time, $address, $instruction, $service, $method);
+
+      // Execute the statement
+      if ($stmt->execute()) {
+          echo "<h3>Reservation successful!</h3>";
+      } else {
+          echo "<h3>Failed to make a reservation: " . $stmt->error . "</h3>";
+      }
+
+      $stmt->close();
+      $conn->close();
   }
   ?>
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
