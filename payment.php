@@ -39,18 +39,18 @@
     } else {
     ?>
     <div class="navigation">
-        <a href="reservationtailor.html" class="back-arrow" aria-label="Go back">&larr;</a>
+        <a href="reservationtailor.php" class="back-arrow" aria-label="Go back">&larr;</a>
         <span class="logo">F4</span>
         <div class="breadcrumbs">
-          <a href="storeSearching.html" class="breadcrumb">&nbsp;&nbsp;Home</a>
+          <a href="storeSearching.php" class="breadcrumb">&nbsp;&nbsp;Home</a>
           <span class="breadcrumb-separator">|</span>
-          <a href="tailorProfile.html" class="breadcrumb">Fairytale Tailor Shop</a>
+          <a href="tailorProfile.php" class="breadcrumb">Fairytale Tailor Shop</a>
           <span class="breadcrumb-separator">|</span>
-          <a href="reservationtailor.html" class="breadcrumb">Book Now</a>
+          <a href="reservationtailor.php" class="breadcrumb">Book Now</a>
           <span class="breadcrumb-separator">|</span>
           <a href="payment.php" class="breadcrumb active">Payment</a>
         </div>
-        <a href="customerProfile.html"><img src="image/login.png" style="height:25px; width:25px; margin-left:10px;"></a>
+        <a href="customerProfile.php"><img src="image/login.png" style="height:25px; width:25px; margin-left:10px;"></a>
     </div>
     <div class="total-payment-container">
         <div class="total-text">TOTAL PAYMENT</div>
