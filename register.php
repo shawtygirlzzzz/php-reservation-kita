@@ -117,9 +117,7 @@
                 <div class="select">
                     <select id="servicetypeselection" name="servicetype_selection" disabled onchange="selectservice()">
                         <option value="" disabled selected>Types of services</option>
-                        <option value="medical">Medical</option>
                         <option value="tailor">Tailor</option>
-                        <option value="spa">Spa</option>
                     </select>
                     <p></p>
                     
@@ -130,21 +128,6 @@
                         <label><input type="checkbox" name="serviceprovided[]" value="mencustommade" disabled> Men's Custom Made Tailoring</label>
                     </div>
 
-                    <div id="spaserviceprovided" style="display:none;">
-                        <h4>Spa Service Provided</h4>
-                        <label><input type="checkbox" name="serviceprovided[]" value="facialtreatment" disabled> Facial Treatment</label><br>
-                        <label><input type="checkbox" name="serviceprovided[]" value="bodytreatment" disabled> Body Treatment</label><br>
-                        <label><input type="checkbox" name="serviceprovided[]" value="nailservices" disabled> Nail Services</label>
-                    </div>
-            
-                    <div id="medicalserviceprovided" style="display:none;">
-                        <h4>Medical Service Provided</h4>
-                        <label><input type="checkbox" name="serviceprovided[]" value="vaccinations" disabled> Vaccinations</label><br>
-                        <label><input type="checkbox" name="serviceprovided[]" value="labtesting" disabled> Laboratory Testing</label><br>
-                        <label><input type="checkbox" name="serviceprovided[]" value="screeningtreatment" disabled> Screening and Treatment</label><br>
-                        <label><input type="checkbox" name="serviceprovided[]" value="specializedtreatment" disabled> Specialized Treatment</label>
-                    </div>
-                    
                     <p></p>
                     <input type="text" id="licensenumber" name="licensenumber" placeholder="License Number" disabled>
                     <p></p>
@@ -175,7 +158,7 @@
 
         function selecttype(isServiceProvider) {
             var type = document.getElementById("servicetypeselection");
-            var services = document.querySelectorAll('#tailorserviceprovided input, #spaserviceprovided input, #medicalserviceprovided input');
+            var services = document.querySelectorAll('#tailorserviceprovided input');
             var license = document.getElementById("licensenumber");
             var name = document.getElementById("storename");
             var start = document.getElementById("starttime");
@@ -188,38 +171,27 @@
             end.disabled = !isServiceProvider;
 
             services.forEach(service => {
-                service.disabled = true;
+                service.disabled = !isServiceProvider;
             });
 
             if (!isServiceProvider) {
                 document.getElementById("tailorserviceprovided").style.display = "none";
-                document.getElementById("spaserviceprovided").style.display = "none";
-                document.getElementById("medicalserviceprovided").style.display = "none";
             }
         }
 
         function selectservice() {
             var type = document.getElementById("servicetypeselection");
             var tailorServices = document.getElementById("tailorserviceprovided");
-            var spaServices = document.getElementById("spaserviceprovided");
-            var medicalServices = document.getElementById("medicalserviceprovided");
-            var services = {
-                "tailor": tailorServices,
-                "spa": spaServices,
-                "medical": medicalServices
-            };
 
-            for (var key in services) {
-                services[key].style.display = "none";
-                services[key].querySelectorAll('input').forEach(input => {
-                    input.disabled = true;
-                });
-            }
-
-            if (type.value in services) {
-                services[type.value].style.display = "block";
-                services[type.value].querySelectorAll('input').forEach(input => {
+            if (type.value === "tailor") {
+                tailorServices.style.display = "block";
+                tailorServices.querySelectorAll('input').forEach(input => {
                     input.disabled = false;
+                });
+            } else {
+                tailorServices.style.display = "none";
+                tailorServices.querySelectorAll('input').forEach(input => {
+                    input.disabled = true;
                 });
             }
         }
