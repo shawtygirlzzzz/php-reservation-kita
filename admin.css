@@ -1,0 +1,98 @@
+h2 { margin-top: 20px; }
+section { display: none; }
+.visible { display: block; }
+.logo{font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+nav ul li a:hover,
+nav ul li.active a {
+    color: red;
+}
+
+
+.button {
+    display: inline-block;
+    margin-top: 3px;
+    background-color: rgb(206, 100, 100);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    text-align: center;
+    width: 99%; /* Fixed width for uniformity */
+    border: 1px solid rgb(7, 6, 6);
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+table { 
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 93.53%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+    font-size: smaller;
+}
+
+.title{
+    margin-left: 50px;
+}
+
+table, th, td { 
+    border: 1px solid black; 
+}
+
+th, td { 
+    padding: 8px; text-align: left; 
+    border:3px solid black;
+}
+
+th{
+    font-weight: bolder;
+    background-color: rgb(206, 100, 100);
+}
+
+.contact a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
