@@ -6,6 +6,27 @@
   <title>Admin Page</title>
   <link rel="stylesheet" href="admin.css">
   <script>
+    function approveTailor(button) {
+      var row = button.parentNode.parentNode;
+      row.style.display = 'none';
+      // Add logic to update status and send notification here
+      alert('Tailor approved and notification sent.');
+    }
+
+    function rejectTailor(button) {
+      var row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+      // Add logic to drop row and send notification here
+      alert('Tailor rejected and notification sent.');
+    }
+
+    function done(button) {
+      var row = button.parentNode.parentNode;
+      row.style.display = 'none';
+      // Add logic to update status and send notification here
+      alert('The request has been completed');
+    }
+
     function showSection(id) {
       document.getElementById('approval').classList.remove('visible');
       document.getElementById('responses').classList.remove('visible');
@@ -18,7 +39,55 @@
 
       document.querySelector('nav ul li a[href="javascript:showSection(\'' + id + '\')"]').parentNode.classList.add('active');
     }
+
+    window.onload = function() {
+      var currentSection = "<?php echo isset($_SESSION['current_section']) ? $_SESSION['current_section'] : 'approval'; ?>";
+      showSection(currentSection);
+    }
+
+    
+    function handleAction(action, name, section) {
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "admin.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert(xhr.responseText);
+            // Remove the row if action is approve or reject
+            if (action === 'approve' || action === 'reject') {
+                document.querySelector(`tr[data-name="${name}"]`).style.display = 'none';
+            }
+            // Remove the row if action is done
+            if (action === 'done') {
+                document.querySelector(`tr[data-name="${name}"]`).style.display = 'none';
+            }
+        }
+    };
+
+    xhr.send(`action=${action}&name=${name}&section=${section}`);
+}
+
+
   </script>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'];
+    $name = $_POST['name'];
+
+    if ($action === 'approve') {
+        echo "Tailor $name approved and notification sent.";
+    } elseif ($action === 'reject') {
+        echo "Tailor $name rejected and notification sent.";
+    } elseif ($action === 'done') {
+        echo "Request from $name has been completed.";
+    }
+    exit;
+}
+?>
+
+
 </head>
 <body>
   <header>
@@ -54,37 +123,82 @@
         </tr>
       </thead>
       <tbody>
-        <?php
-        // Example data
-        $tailors = [
-          ["John Doe", "123 Main St, Cityville", "john.doe@example.com", "+1234567890", "Doe Tailoring", "9:00 AM", "5:00 PM", "qualifications/john_doe.pdf", "Certificate in Tailoring from XYZ Institute"],
-          ["Jane Smith", "456 Elm St, Townsville", "jane.smith@example.com", "+0987654321", "Smith Tailoring", "10:00 AM", "6:00 PM", "qualifications/jane_smith.pdf", "Diploma in Fashion Design from ABC Academy"],
-          ["Emily Brown", "789 Maple Ave, Villageville", "emily.brown@example.com", "+1122334455", "Brown Tailoring", "8:00 AM", "4:00 PM", "qualifications/emily_brown.pdf", "Advanced Tailoring Certificate from DEF School"],
-          ["Michael White", "1010 Pine St, Hamletville", "michael.white@example.com", "+2233445566", "White Tailoring", "11:00 AM", "7:00 PM", "qualifications/michael_white.pdf", "Certificate in Advanced Tailoring Techniques from GHI Institute"],
-          ["Sarah Green", "2020 Oak St, Boroughville", "sarah.green@example.com", "+3344556677", "Green Tailoring", "7:00 AM", "3:00 PM", "qualifications/sarah_green.pdf", "Diploma in Tailoring from JKL College"],
-        ];
-
-        foreach ($tailors as $tailor) {
-          echo "<tr>
-            <td>{$tailor[0]}</td>
-            <td>{$tailor[1]}</td>
-            <td>{$tailor[2]}</td>
-            <td>{$tailor[3]}</td>
-            <td>{$tailor[4]}</td>
-            <td>{$tailor[5]}</td>
-            <td>{$tailor[6]}</td>
-            <td><a href='{$tailor[7]}' class='button'>Download</a></td>
-            <td>{$tailor[8]}</td>
-            <td>
-              <form method='post' action=''>
-                <input type='hidden' name='tailor_name' value='{$tailor[0]}'>
-                <button class='button' name='action' value='approve'>Approve</button>
-                <button class='button' name='action' value='reject'>Reject</button>
-              </form>
-            </td>
-          </tr>";
-        }
-        ?>
+        <tr data-name="John Doe">
+          <td>John Doe</td>
+          <td>123 Main St, Cityville</td>
+          <td>john.doe@example.com</td>
+          <td>+1234567890</td>
+          <td>Doe Tailoring</td>
+          <td>9:00 AM</td>
+          <td>5:00 PM</td>
+          <td><a href="qualifications/john_doe.pdf" class="button">Download</a></td>
+          <td>Certificate in Tailoring from XYZ Institute</td>
+          <td>
+            <button class="button" onclick="handleAction('approve', 'John Doe', 'approval')">Approve</button>
+            <button class="button" onclick="handleAction('reject', 'John Doe', 'approval')">Reject</button>
+          </td>
+        </tr>
+        <tr data-name="Jane Smith">
+          <td>Jane Smith</td>
+          <td>456 Elm St, Townsville</td>
+          <td>jane.smith@example.com</td>
+          <td>+0987654321</td>
+          <td>Smith Tailoring</td>
+          <td>10:00 AM</td>
+          <td>6:00 PM</td>
+          <td><a href="qualifications/jane_smith.pdf" class="button">Download</a></td>
+          <td>Diploma in Fashion Design from ABC Academy</td>
+          <td>
+            <button class="button" onclick="handleAction('approve', 'Jane Smith', 'approval')">Approve</button>
+            <button class="button" onclick="handleAction('reject', 'Jane Smith', 'approval')">Reject</button>
+          </td>
+        </tr>
+        <!-- Add other rows similarly -->
+        <tr>
+          <td>Emily Brown</td>
+          <td>789 Maple Ave, Villageville</td>
+          <td>emily.brown@example.com</td>
+          <td>+1122334455</td>
+          <td>Brown Tailoring</td>
+          <td>8:00 AM</td>
+          <td>4:00 PM</td>
+          <td><a href="qualifications/emily_brown.pdf" class = "button">Download</a></td>
+          <td>Advanced Tailoring Certificate from DEF School</td>
+          <td>
+            <button class = "button" onclick="approveTailor(this)">Approve</button>
+            <button class = "button" onclick="rejectTailor(this)">Reject</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Michael White</td>
+          <td>1010 Pine St, Hamletville</td>
+          <td>michael.white@example.com</td>
+          <td>+2233445566</td>
+          <td>White Tailoring</td>
+          <td>11:00 AM</td>
+          <td>7:00 PM</td>
+          <td><a href="qualifications/michael_white.pdf" class = "button">Download</a></td>
+          <td>Certificate in Advanced Tailoring Techniques from GHI Institute</td>
+          <td>
+            <button class = "button" onclick="approveTailor(this)">Approve</button>
+            <button class = "button" onclick="rejectTailor(this)">Reject</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Sarah Green</td>
+          <td>2020 Oak St, Boroughville</td>
+          <td>sarah.green@example.com</td>
+          <td>+3344556677</td>
+          <td>Green Tailoring</td>
+          <td>7:00 AM</td>
+          <td>3:00 PM</td>
+          <td><a href="qualifications/sarah_green.pdf" class = "button">Download</a></td>
+          <td>Diploma in Tailoring from JKL College</td>
+          <td>
+            <button class = "button" onclick="approveTailor(this)">Approve</button>
+            <button class = "button" onclick="rejectTailor(this)">Reject</button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -102,50 +216,48 @@
         </tr>
       </thead>
       <tbody>
-        <?php
-        // Example data
-        $responses = [
-          ["Alex Johnson", "+4455667788", "alex.johnson@example.com", "I have a query about the tailoring services."],
-          ["Laura Wilson", "+5566778899", "laura.wilson@example.com", "Can you tailor wedding dresses?"],
-          ["Chris Martin", "+6677889900", "chris.martin@example.com", "What are your operating hours?"],
-          ["Megan Lee", "+7788990011", "megan.lee@example.com", "How long does it take to tailor a suit?"],
-          ["David Kim", "+8899001122", "david.kim@example.com", "Do you provide alteration services?"],
-        ];
-
-        foreach ($responses as $response) {
-          echo "<tr>
-            <td>{$response[0]}</td>
-            <td>{$response[1]}</td>
-            <td>{$response[2]}</td>
-            <td>{$response[3]}</td>
-            <td>
-              <form method='post' action=''>
-                <input type='hidden' name='response_name' value='{$response[0]}'>
-                <button class='button' name='action' value='done'>Done</button>
-              </form>
-            </td>
-          </tr>";
-        }
-        ?>
+        <tr data-name="Alex Johnson">
+          <td>Alex Johnson</td>
+          <td>+4455667788</td>
+          <td>alex.johnson@example.com</td>
+          <td>I have a query about the tailoring services.</td>
+          <td>
+            <button class="button" onclick="handleAction('done', 'Alex Johnson', 'responses')">Done</button>
+          </td>
+        </tr>
+        <tr data-name="Laura Wilson">
+          <td>Laura Wilson</td>
+          <td>+5566778899</td>
+          <td>laura.wilson@example.com</td>
+          <td>Can you tailor wedding dresses?</td>
+          <td>
+            <button class="button" onclick="handleAction('done', 'Laura Wilson', 'responses')">Done</button>
+          </td>
+        </tr>
+        <!-- Add other rows similarly -->
+        <tr>
+          <td>Chris Martin</td>
+          <td>+6677889900</td>
+          <td>chris.martin@example.com</td>
+          <td>What are your operating hours?</td>
+          <td><button class = "button" onclick="done(this)">Done</button></td>
+        </tr>
+        <tr>
+          <td>Megan Lee</td>
+          <td>+7788990011</td>
+          <td>megan.lee@example.com</td>
+          <td>How long does it take to tailor a suit?</td>
+          <td><button class = "button" onclick="done(this)">Done</button></td>
+        </tr>
+        <tr>
+          <td>David Kim</td>
+          <td>+8899001122</td>
+          <td>david.kim@example.com</td>
+          <td>Do you provide alteration services?</td>
+          <td><button class = "button" onclick="done(this)">Done</button></td>
+        </tr>
       </tbody>
     </table>
   </section>
-
-  <?php
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'];
-
-    if ($action === 'approve') {
-      $tailor_name = $_POST['tailor_name'];
-      echo "<script>alert('Tailor $tailor_name approved and notification sent.');</script>";
-    } elseif ($action === 'reject') {
-      $tailor_name = $_POST['tailor_name'];
-      echo "<script>alert('Tailor $tailor_name rejected and notification sent.');</script>";
-    } elseif ($action === 'done') {
-      $response_name = $_POST['response_name'];
-      echo "<script>alert('Request from $response_name has been completed.');</script>";
-    }
-  }
-  ?>
 </body>
 </html>
