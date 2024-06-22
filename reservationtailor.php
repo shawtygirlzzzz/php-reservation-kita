@@ -12,7 +12,6 @@
     <nav>
         <ul>
             <li><a href="storeSearching.php">Stores</a></li>
-            <li style="color: red;"><a href="service.php" style="color: red;">Services</a></li>
             <li><a href="contact.php">Contact Us</a></li>
         </ul>
     </nav>
