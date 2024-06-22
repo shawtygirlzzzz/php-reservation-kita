@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Contact Us!</title>
+		<link rel="stylesheet"type = "text/css" href="contact.css">
+</head>
+<body>
+	<header>
+		<h1>F4</h1>
+		<nav>
+			<ul>
+				<li style="color: red;"><a href="storeSearching.html" ">Stores</a></li>
+				<li><a href="service.html">Services</a></li>
+				<li><a href="contact.html"style="color: red;">Contact Us</a></li>
+			</ul>
+		</nav>
+		<div class="contact">
+			<a href="https://wa.me/qr/DMJ2DG5J7LDUF1">
+				<img src="image/whatsapp.png"alt="WhatsApp" style="height:20px; width:20px; margin-right:5px;">
+				+60103344971
+			</a>
+			<a href="login.html">
+				<img src="image/loginaccount.png" alt="Login" style="height:20px; width:20px; margin-left:5px;">
+			</a>
+		</div>
+	</header>
+
+	<nav class="bold card center" style="font-size: x-large; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+Reservation Kita Store
+	</nav>
+	<nav class="bold card center" style="font-size: x-large; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+		<p >Whatsapp or Call Us at +6011-12345678 </p>
+
+		<p>Visit Us at Tailor Kita Store</p>
+                        
+		<p>Address: Jalan Hang Tuah Jaya, 76100 Durian Tunggal, Melaka</p>
+	</nav>
+	
+	<h2 class="center" style="font-weight:900;font-size: xx-large;">Contact Us </h2>
+	<div class="card">
+		<form id="myForm" action="contact.php" method="POST">
+			<label for="fname">Name</label><label style="color: red;">*</label>
+			<input type="text" id="name" name="name" placeholder="Your name.." required>
+			
+			<label for="Contact">Contact Number</label><label style="color: red;">*</label>
+			<input type="text" type = "tel" id="phone" name = "phone" placeholder = "01x-xxxxxxxx" size = "14" required>
+				
+			<label for="email">Email</label><label style="color: red;">*</label>
+			<input type="text" placeholder="abc@example.com" autocomplete="on" name = "email" size = "30" pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" required>
+				
+			
+			<label for="mesej">Message</label><label style="color: red;">*</label>
+			<textarea  placeholder="Type your Message here." style="height:200px" name="message" required></textarea>
+			<h5 style="color: red;">*this is required to fill</h5>
+			
+			<input onclick="myFunction()" type="submit" value="Submit">
+		</form>
+	<script>
+		function myFunction() {
+			var form = document.getElementById("myForm");
+			if (form.checkValidity()) {
+				alert("Thank you! We will notify you later.");
+			} else {
+			   alert("Please fill out all required fields before submitting!");
+				return false;
+			}
+		}
+	</script>
+</body>
+<footer>
+	</p><h6 class="left" style="font-family:Arial, Helvetica, sans-serif"> Copyright 2024 | F4 </h6>
+</footer>
+
+</html>
+
+
+
+
+
