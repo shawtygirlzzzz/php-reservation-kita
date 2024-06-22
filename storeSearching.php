@@ -15,7 +15,6 @@
         <nav>
             <ul>
                 <li style="color: red;"><a href="storeSearching.php">Stores</a></li>
-                <li><a href="service.php">Services</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
             </ul>
         </nav>
