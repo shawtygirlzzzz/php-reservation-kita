@@ -11,7 +11,6 @@
         <h1>F4</h1>
         <nav>
             <a href="storeSearching.php"><button id="stores">Stores</button></a>
-            <a href="service.php"><button id="service">Services</button></a>
             <a href="contact.php"><button id="contact">Contact Us</button></a>
         </nav>
         <div class="header-right">
