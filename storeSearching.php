@@ -1,15 +1,20 @@
+<?php
+    include('connection.php');
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tailor Kita Stores</title>
     <link rel="stylesheet" href="storeSearching.css">
 </head>
 <body>
-    <header>
+    <header id="header">
         <h1>F4</h1>
         <nav>
             <ul>
-                <li style="color: red;"><a href="storeSearching.php" style="color: red;">Stores</a></li>
+                <li style="color: red;"><a href="storeSearching.php">Stores</a></li>
                 <li><a href="service.php">Services</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
             </ul>
@@ -24,160 +29,139 @@
             </a>
         </div>
     </header>
-
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <br>
+    <form id="filter-form">
         <div class="filters">
-            <label for="types-of-services">Types of Services
-                <select id="types-of-services" name="types-of-services" onchange="this.form.submit()">
-                    <option value="Tailor" selected>Tailor</option>
-                </select>
-            </label>
-            <label for="services-required">Services Required
-                <select id="services-required" name="services-required" onchange="this.form.submit()">
-                    <option value="" disabled selected>Select a Service Required</option>
-                    <?php
-                    $services = [
-                        'Repairs/Alterations' => ['Shortening', 'Hemming', 'Cuffs', 'Mending Services', 'Sewing', 'Patching', 'Bonding', 'Sashiko', 'Darning', 'Other Basic Repair'],
-                        'Women\'s Custom Made Tailoring' => ['Blouse', 'Salwar Suit', 'Patiala Suit', 'Pant Suit', 'Baju Kebaya', 'Baju Kurung Moden', 'Baju Kurung Kedah', 'Baju Kurung Pahang', 'Saree Fall Pico', 'Other Women\'s dresses'],
-                        'Men\'s Custom Made Tailoring' => ['Shirt and Pants', 'Jeans', 'Kurta', 'Trouser', 'Men suits', 'Baju Melayu Teluk Belanga', 'Other Men\'s dresses']
-                    ];
-
-                    foreach($services as $service => $details) {
-                        $value = strtolower(str_replace(' ', '', $service));
-                        echo "<option value=\"$value\"";
-                        if(isset($_POST['services-required']) && $_POST['services-required'] == $value) echo ' selected';
-                        echo ">$service</option>";
-                    }
-                    ?>
-                </select>
-            </label>
-            <label for="location">Location
-                <select id="location" name="location" onchange="this.form.submit()">
-                    <option value="">Select a Location</option>
-                    <option value="Ayer Keroh" <?php if(isset($_POST['location']) && $_POST['location'] == 'Ayer Keroh') echo 'selected'; ?>>Ayer Keroh</option>
-                    <option value="Durian Tunggal" <?php if(isset($_POST['location']) && $_POST['location'] == 'Durian Tunggal') echo 'selected'; ?>>Durian Tunggal</option>
-                    <option value="Batu Berendam" <?php if(isset($_POST['location']) && $_POST['location'] == 'Batu Berendam') echo 'selected'; ?>>Batu Berendam</option>
-                    <option value="Bukit Katil" <?php if(isset($_POST['location']) && $_POST['location'] == 'Bukit Katil') echo 'selected'; ?>>Bukit Katil</option>
-                    <option value="Cheng" <?php if(isset($_POST['location']) && $_POST['location'] == 'Cheng') echo 'selected'; ?>>Cheng</option>
-                    <option value="Masjid Tanah" <?php if(isset($_POST['location']) && $_POST['location'] == 'Masjid Tanah') echo 'selected'; ?>>Masjid Tanah</option>
-                    <option value="Bandaraya Melaka" <?php if(isset($_POST['location']) && $_POST['location'] == 'Bandaraya Melaka') echo 'selected'; ?>>Bandaraya Melaka</option>
-                </select>
-            </label>
+            <details>
+                <summary>Services Provided</summary>
+                <div id="services-required">
+                    <label><input type="checkbox" name="services-required[]" value="Blouses Kids"> Blouses Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Blouses Adult"> Blouses Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Skirt Kids"> Skirt Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Skirt Adult"> Skirt Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Baju Kebaya Kids"> Baju Kebaya Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Baju Kebaya Adult"> Baju Kebaya Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Baju Kurung Kids"> Baju Kurung Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Baju Kurung Adult"> Baju Kurung Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Cheongsam/Qipao Kids"> Cheongsam/Qipao Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Cheongsam/Qipao Adult"> Cheongsam/Qipao Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Saree Blouses Kids"> Saree Blouses Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Saree Blouses Adult"> Saree Blouses Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Jeans Kids"> Jeans Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Jeans Adult"> Jeans Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Baju Melayu Kids"> Baju Melayu Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Baju Melayu Adult"> Baju Melayu Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="T-shirts Kids"> T-shirts Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="T-shirts Adult"> T-shirts Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Polo Shirts Kids"> Polo Shirts Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Polo Shirts Adult"> Polo Shirts Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Shorts Kids"> Shorts Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Shorts Adult"> Shorts Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Uniforms Kids"> Uniforms Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Uniforms Adult"> Uniforms Adult</label>
+                    <label><input type="checkbox" name="services-required[]" value="Costumes Kids"> Costumes Kids</label>
+                    <label><input type="checkbox" name="services-required[]" value="Costumes Adult"> Costumes Adult</label>
+                </div>
+            </details>
+            <details>
+                <summary>Location</summary>
+                <div id="location-filter">
+                    <label><input type="checkbox" name="location[]" value="Ayer Keroh"> Ayer Keroh</label>
+                    <label><input type="checkbox" name="location[]" value="Durian Tunggal"> Durian Tunggal</label>
+                    <label><input type="checkbox" name="location[]" value="Batu Berendam"> Batu Berendam</label>
+                    <label><input type="checkbox" name="location[]" value="Bukit Katil"> Bukit Katil</label>
+                    <label><input type="checkbox" name="location[]" value="Cheng"> Cheng</label>
+                    <label><input type="checkbox" name="location[]" value="Masjid Tanah"> Masjid Tanah</label>
+                    <label><input type="checkbox" name="location[]" value="Bandaraya Melaka"> Bandaraya Melaka</label>
+                </div>
+            </details>
         </div>
     </form>
 
     <div class="store-list">
-        <?php
-        $stores = [
-            [
-                'name' => 'Fairytale Tailor Shop',
-                'address' => '7, Jalan Komersial TAKH 2, Taman Ayer Keroh Heights, 76450 Ayer Keroh, Melaka',
-                'rating' => '⭐⭐⭐⭐☆ (12 reviews)',
-                'services' => ['Women\'s Custom Made Tailoring', 'Men\'s Custom Made Tailoring', 'Repairs/Alterations'],
-                'serviceType' => 'Tailor',
-                'location' => 'Ayer Keroh'
-            ],
-            [
-                'name' => 'Elegant Suits',
-                'address' => '15, Taman Sutera, 76100 Durian Tunggal, Melaka',
-                'rating' => '⭐⭐⭐⭐ (18 reviews)',
-                'services' => ['Women\'s Custom Made Tailoring'],
-                'serviceType' => 'Tailor',
-                'location' => 'Durian Tunggal'
-            ]
-        ];
+    <?php
+        $sql = "SELECT t.*, GROUP_CONCAT(DISTINCT sp.Name SEPARATOR ', ') AS ServiceNames, 
+                GROUP_CONCAT(DISTINCT st.Name SEPARATOR ', ') AS ServiceTypes
+                FROM tailor t
+                LEFT JOIN servicedetails sd ON t.TUsername = sd.TUsername
+                LEFT JOIN serviceprovided sp ON sd.ServiceID = sp.ServiceID
+                LEFT JOIN servicetype st ON sd.TypeID = st.TypeID
+                WHERE t.Status = 'verified' 
+                GROUP BY t.TUsername";
 
-        foreach($stores as $store) {
-            $isServiceTypeMatch = strtolower($store['serviceType']) == 'tailor';
-            $isServiceRequiredMatch = !isset($_POST['services-required']) || $_POST['services-required'] == '' || array_search($_POST['services-required'], array_map(function($s) { return strtolower(str_replace(' ', '', $s)); }, $store['services'])) !== false;
-            $isLocationMatch = !isset($_POST['location']) || $_POST['location'] == '' || $store['location'] == $_POST['location'];
+        $result = $conn->query($sql);
 
-            if ($isServiceTypeMatch && $isServiceRequiredMatch && $isLocationMatch) {
-                echo '<div class="store '.$store['serviceType'].'" data-service="'.$store['serviceType'].'" data-location="'.$store['location'].'">';
-                echo '<h2>'.$store['name'].'</h2>';
-                echo '<p>'.$store['address'].'</p>';
-                echo '<p>Rating: '.$store['rating'].'</p>';
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $storeName = isset($row['StoreName']) ? htmlspecialchars($row['StoreName']) : 'Store Name Not Available';
+                $address = isset($row['Address']) ? htmlspecialchars($row['Address']) : 'Address Not Available';
+                $ranking = isset($row['Ranking']) ? htmlspecialchars($row['Ranking']) : 0;
+                $serviceNames = isset($row['ServiceNames']) ? htmlspecialchars($row['ServiceNames']) : 'No services';
+                $serviceTypes = isset($row['ServiceTypes']) ? htmlspecialchars($row['ServiceTypes']) : 'No service types';
+                $location = isset($row['Location']) ? htmlspecialchars($row['Location']) : '';
+
+                echo '<div class="store Tailor" data-service="' . htmlspecialchars($serviceNames) . '" data-location="' . htmlspecialchars($location) . '">';
+                echo '<h2>' . $storeName . '</h2>';
+                echo '<p>' . $address . '</p>';
+                echo '<p>Rating: ' . $ranking . '</p>';
+                echo '<p>Types of Services: ' . $serviceTypes . '</p>';
                 echo '<ul>';
-                foreach($store['services'] as $service) {
-                    echo '<li>'.$service.'</li>';
+                foreach (explode(', ', $serviceNames) as $service) {
+                    echo '<li>' . htmlspecialchars($service) . '</li>';
                 }
                 echo '</ul>';
                 echo '<a href="tailorProfile.php" class="button">Book Appointment</a>';
                 echo '</div>';
             }
+        } else {
+            echo '<p>Sorry, no shops are available.</p>';
         }
-        ?>
+
+        $conn->close();
+    ?>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const services = {
-                'Tailor': {
-                    'Repairs/Alterations': ['Shortening', 'Hemming', 'Cuffs', 'Mending Services', 'Sewing', 'Patching', 'Bonding', 'Sashiko', 'Darning', 'Other Basic Repair'],
-                    'Women\'s Custom Made Tailoring': ['Blouse', 'Salwar Suit', 'Patiala Suit', 'Pant Suit', 'Baju Kebaya', 'Baju Kurung Moden', 'Baju Kurung Kedah', 'Baju Kurung Pahang', 'Saree Fall Pico', 'Other Women\'s dresses'],
-                    'Men\'s Custom Made Tailoring': ['Shirt and Pants', 'Jeans', 'Kurta', 'Trouser', 'Men suits', 'Baju Melayu Teluk Belanga', 'Other Men\'s dresses']
-                }
-            };
-
-            const typesOfServices = document.getElementById('types-of-services');
-            const servicesRequired = document.getElementById('services-required');
-            const locationDropdown = document.getElementById('location');
-            const storeList = document.querySelector('.store-list');
+            const servicesRequired = document.querySelectorAll('input[name="services-required[]"]');
+            const locationCheckboxes = document.querySelectorAll('input[name="location[]"]');
             const allStores = document.querySelectorAll('.store');
-
-            function updateServicesDropdown() {
-                const type = typesOfServices.value;
-                servicesRequired.innerHTML = '<option value="" disabled selected>Select a Service Required</option>';
-
-                if (type) {
-                    servicesRequired.disabled = false;
-                    if (services[type]) {
-                        Object.keys(services[type]).forEach(category => {
-                            const option = document.createElement('option');
-                            option.value = category.toLowerCase().replace(/\s+/g, '');
-                            option.text = category;
-                            servicesRequired.appendChild(option);
-                        });
-                    }
-                } 
-                
-                else {
-                    servicesRequired.disabled = true;
-                }
-                updateStoreList();
-            }
 
             function normalizeText(text) {
                 return text.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
             }
 
             function updateStoreList() {
-                const selectedService = normalizeText(typesOfServices.value);
-                const selectedServiceRequired = normalizeText(servicesRequired.value);
-                const selectedLocation = locationDropdown.value;
+                const selectedServicesRequired = Array.from(servicesRequired).filter(checkbox => checkbox.checked).map(checkbox => normalizeText(checkbox.value));
+                const selectedLocations = Array.from(locationCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => normalizeText(checkbox.value));
 
-                storeList.innerHTML = '';
+                let visibleStores = 0;
 
                 allStores.forEach(store => {
-                    const service = normalizeText(store.dataset.service);
-                    const location = store.dataset.location;
-                    const servicesList = Array.from(store.querySelectorAll('li')).map(li => normalizeText(li.textContent.trim()));
+                    const storeServices = store.dataset.service.split(', ').map(service => normalizeText(service));
+                    const storeLocation = normalizeText(store.dataset.location);
 
-                    const isServiceTypeMatch = !selectedService || service === selectedService;
-                    const isServiceRequiredMatch = !selectedServiceRequired || servicesList.some(s => s.includes(selectedServiceRequired));
-                    const isLocationMatch = !selectedLocation || location === selectedLocation;
+                    const isServiceRequiredMatch = selectedServicesRequired.length === 0 || selectedServicesRequired.some(service => storeServices.includes(service));
+                    const isLocationMatch = selectedLocations.length === 0 || selectedLocations.includes(storeLocation);
 
-                    if (isServiceTypeMatch && isServiceRequiredMatch && isLocationMatch) {
-                        storeList.appendChild(store.cloneNode(true));
+                    if (isServiceRequiredMatch && isLocationMatch) {
+                        store.style.display = 'block';
+                        visibleStores++;
+                    } else {
+                        store.style.display = 'none';
                     }
                 });
+
+                const storeListDiv = document.querySelector('.store-list');
+                if (visibleStores === 0) {
+                    storeListDiv.innerHTML = '<p>Sorry, no shops are available.</p>';
+                }
             }
 
-            typesOfServices.addEventListener('change', updateServicesDropdown);
-            servicesRequired.addEventListener('change', updateStoreList);
-            locationDropdown.addEventListener('change', updateStoreList);
+            servicesRequired.forEach(checkbox => checkbox.addEventListener('change', updateStoreList));
+            locationCheckboxes.forEach(checkbox => checkbox.addEventListener('change', updateStoreList));
 
-            updateServicesDropdown(); 
+            updateStoreList();
         });
     </script>
 </body>
