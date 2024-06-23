@@ -15,7 +15,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 	if ($error === 0) {
 		if ($img_size > 12500000) {
 			$em = "Sorry, your file is too large.";
-		    header("Location: profilePageWithDesc.php?error=$em");
+		    header("Location: profilePageWithDes.php?error=$em");
 		}else {
 			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
 			$img_ex_lc = strtolower($img_ex);
@@ -31,7 +31,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 				$sql = "INSERT INTO images(image_url) 
 				        VALUES('$new_img_name')";
 				mysqli_query($conn, $sql);
-				header("Location: profilePageWithDesc.php");
+				header("Location: profilePageWithDes.php");
 			}else {
 				$em = "You can't upload files of this type";
 		        header("Location: index.php?error=$em");
@@ -39,9 +39,9 @@ if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 		}
 	}else {
 		$em = "unknown error occurred!";
-		header("Location: profilePageWithDesc.php?error=$em");
+		header("Location: profilePageWithDes.php?error=$em");
 	}
 
 }else {
-	header("Location: profilePageWithDesc.php");
+	header("Location: profilePageWithDes.php");
 }
