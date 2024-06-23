@@ -1,0 +1,195 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header a, .header span {
+    text-decoration: none;
+    color: black;
+}
+
+.user-controls button {
+    margin-left: 5px;
+}
+
+.content {
+    margin: 20px;
+    background-image:url(image/an-overview-of-the-interior-of-a-tailoring-shop-GDNFCM.jpg);
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.content1 {
+    margin: 20px;
+    background: #d9d9d9;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgb(140, 137, 137);
+    bottom: 50px;
+}
+
+.shop-info h1 {
+    color: white;
+    margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight:900;
+    font-style: italic;
+    
+}
+aside {
+    width: 30%;
+    padding-left: 15px;
+    margin-left: 15px;
+    float: right;
+    font-style: italic;
+    background-color: lightgray;
+  }
+
+.why-choose-us, .services-provided, .reviews {
+    margin-top: 20px;
+}
+.reviewsbtm{
+    margin-bottom: 20px;
+}
+
+.reviews img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.book-now {
+    background-color: #E28E8E;
+    color: black;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 900;
+    border: none;
+    cursor: pointer;
+    display: block;
+    width:50%;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgb(140, 137, 137);
+}
+.book-now:hover
+{
+    background-color: #cc8282;
+}
+
+.tags {
+    /* background-color: #fff; */
+    padding: 20px;
+    margin: 20px;
+}
+
+.tags ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tags li {
+    margin-bottom: 5px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .breadcrumb {
+    text-decoration: none;
+    color: #333;
+    margin: 0 5px;
+  }
+  
+  .breadcrumb-separator {
+    color: #333;
+  }
+  
+  .breadcrumb.active {
+    color: #e60000; /* Highlight the active page */
+  }
+  .back-arrow {
+    font-size: 24px;
+    text-decoration: none;
+    margin-right: 10px;
+    color: #333;
+  }
+  .logo {
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .button {
+    background-color: #e28e8eb9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    display: block;
+    width: 11%;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .button:hover {
+    background-color: #cc8282;
+  }
+
+  .button-seemore {
+    background-color: #ea4646;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    display: block;
+    width: 45%;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .button-seemore:hover {
+    background-color: #c13b3b;
+  }
+
+  .buttoncht {
+    background-color: #757575ab;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    display: block;
+    width: 11%;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .buttoncht:hover {
+    background-color: #757575;
+  }
+
+  a{
+    color:inherit;
+  }
