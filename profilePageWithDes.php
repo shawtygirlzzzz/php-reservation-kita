@@ -33,27 +33,40 @@
 </head>
 <body>
     <?php include "connection.php"; ?>
-    <main>
-        <header class="header">
+    <header>
             <h1>F4</h1>
-            <nav>
-                <a href="storeSearching.html"><button class="nav-button">Stores</button></a>
-                <a href="service.html"><button class="nav-button">Services</button></a>
-                <a href="contact.html"><button class="nav-button">Contact Us</button></a>
-            </nav>
-            <div class="header-right">
-                <div class="logo">
-                    <a href="https://wa.me/qr/DMJ2DG5J7LDUF1"><img src="Image/whatsapp.png" alt="WhatsApp"></a>+601189766500
-                </div>
-                <div class="logo">
-                    <a href="login.html"><img src="Image/login.png" alt="Login Logo"></img></a>
-                </div>
+        <nav>
+            <a href="storeSearching.html"><button class="nav-button">Stores</button></a>
+            <a href="service.html"><button class="nav-button">Services</button></a>
+            <a href="contact.html"><button class="nav-button">Contact Us</button></a>
+        </nav>
+        <div class="header-right">
+            <div class="logo">
+                <a href="https://wa.me/qr/DMJ2DG5J7LDUF1"><img src="Image/whatsapp.png" alt="WhatsApp"></a>+601189766500
             </div>
-        </header>
+            <div class ="logo">
+                <a href="login.html"><img src="Image/login.png" alt="Login Logo"></img></a>
+            </div>
+        </div>
+    </header>
+    <main>
+    
 
         <div class="main-content">
             <div class="left-side">
-                <img src="Image/profilePicture.png" alt="Profile Picture" class="profile-pic">
+            <div class="card">
+                <img src="Image/profile.png" id="profile-pic">
+                <label for="input-file" class="label1">Update Image</label>
+                <input class="input1"type="file" accept="image/jpeg ,image/png, image/jpg" id="input-file">
+                <script>
+            let profilePic = document.getElementById("profile-pic");
+            let inputFile= document.getElementById("input-file");
+
+            inputFile.onchange= function(){
+                profilePic.src = URL.createObjectURL(inputFile.files[0]);
+            }
+        </script>
+            </div>
                 <div class="shop-info">
                     <h2 id="name">FairyTale Tailor Shop</h2>
                     <p><strong>Address:</strong></p>
@@ -135,7 +148,7 @@
                     <input type="text" id="newContactNo" name="Contact Number"><br><br>
                     <label for="newServiceProvided" id="servicetype">Service Provided:</label>
                     <label for="service">Service Type<span style="color: red;">*</span></label>
-                    <select id="service" name="service" required>
+                    <select id="service" name="service">
                         <option value="">Select a service</option>
                         <option value="women">Women's custom made tailoring</option>
                         <option value="men">Men's custom made tailoring</option>
@@ -147,7 +160,7 @@
                     <label for="newOtherInfo">Other Information:</label>
                     <input type="text" id="newOtherInfo" name="Other Information"><br><br>
                     <button type="button" onclick="save()">Save Changes</button>
-                    <button type="button" onclick="close()">Cancel</button>
+                    <button type="button" onclick="closePopup()">Cancel</button>
                 </form>
             </div>
         </div>
@@ -168,6 +181,10 @@
                 var editPopup = document.getElementById('editWindow');
                 editPopup.style.display = 'none';
             }
+            function closePopup() {
+    var editPopup = document.getElementById('editWindow');
+    editPopup.style.display = 'none';
+}
 
             function save() {
                 var nName = document.getElementById("newName").value;
@@ -194,7 +211,7 @@
 
                 document.getElementById("serviceProvided").innerHTML = serviceProvided;
 
-                close();
+                closePopup();
             }
 
             function updateServices() {
