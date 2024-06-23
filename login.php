@@ -1,59 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="login.css">
-</head>
-<body>
-    <h1>F4 </h1>
-    <h2>Login<img src="image/loginaccount.png" class="login-icon"></h2>
-    <form class="login-form" action="login.php" method="post">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required style="background-color: lightgrey;">
+<?php
+session_start();
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required style="background-color:lightgrey;">
+include('connection.php');
 
-        <a href="#">Forgot Password?</a>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect form data
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-        <div class="checkbox">
-            <input type="checkbox" id="remember" name="remember">
-            <label for="remember">Remember me</label>
-        </div>
+    // Validate inputs (you can add more validation if needed)
+    if (empty($username) || empty($password)) {
+        showAlertAndRedirect("Please fill all required fields", 'login.html');
+        exit(); // Exit to prevent further execution
+    }
 
-        <button type="submit">Login</button>
+    // Check if username exists in admin table
+    $sql_admin = "SELECT * FROM admin WHERE AUsername = ?";
+    $stmt_admin = $conn->prepare($sql_admin);
+    $stmt_admin->bind_param("s", $username);
+    $stmt_admin->execute();
+    $result_admin = $stmt_admin->get_result();
 
-        <p>Doesn't have an account? <a href="register.php">Sign up here</a></p>
-    </form>
-    <div class="copyright">
-        <p>Copyright 2024 | F4</p>
-    </div>
-    <div class="illustration">
-        <img src="image/calendar.jpg" alt="Calendar Illustration">
-    </div>
+    if ($result_admin->num_rows > 0) {
+        // Admin username found, fetch the admin data
+        $row = $result_admin->fetch_assoc();
+        $plain_text_password = $row['Password']; // Fetch plain text password from database
+        $name = $row['Name']; // Fetch name of the admin
 
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $remember = isset($_POST['remember']);
-
-        // Handle login logic here
-        // For example, you might check the email and password against a database
-
-        // Dummy check (replace with actual database query)
-        if ($email == 'user@example.com' && $password == 'password') {
-            echo '<p>Login successful!</p>';
-            // Set a cookie if "Remember me" is checked
-            if ($remember) {
-                setcookie('email', $email, time() + (86400 * 30), "/"); // 86400 = 1 day
-            }
+        // Verify password for admin (plain text comparison)
+        if ($password === $plain_text_password) {
+            // Password is correct, proceed with login for admin
+            $_SESSION['username'] = $row['AUsername']; // Store username in session
+            showAlertAndRedirect("Welcome " . $name, 'admin.html');
+            exit();
         } else {
-            echo '<p>Invalid email or password</p>';
+            // Invalid password for admin
+            showAlertAndRedirect("Invalid Password", 'login.html');
+            exit(); // Exit to prevent further execution
         }
     }
-    ?>
-</body>
-</html>
+
+    // Check if username exists in customer table
+    $sql_customer = "SELECT * FROM customer WHERE CUsername = ?";
+    $stmt_customer = $conn->prepare($sql_customer);
+    $stmt_customer->bind_param("s", $username);
+    $stmt_customer->execute();
+    $result_customer = $stmt_customer->get_result();
+
+    // Check if username exists in tailor table
+    $sql_tailor = "SELECT * FROM tailor WHERE TUsername = ?";
+    $stmt_tailor = $conn->prepare($sql_tailor);
+    $stmt_tailor->bind_param("s", $username);
+    $stmt_tailor->execute();
+    $result_tailor = $stmt_tailor->get_result();
+
+    // Check if username exists in customer table
+    if ($result_customer->num_rows > 0) {
+        $row = $result_customer->fetch_assoc();
+        $hashed_password = $row['Password']; // Fetch hashed password from database
+        $name = $row['Name']; // Fetch name of the user
+
+        // Verify password for customer
+        if (password_verify($password, $hashed_password)) {
+            // Password is correct, proceed with login for customer
+            $_SESSION['username'] = $row['CUsername']; // Store username in session
+            showAlertAndRedirect("Welcome " . $name, 'storeSearching.php');
+            exit();
+        } else {
+            // Invalid password for customer
+            showAlertAndRedirect("Invalid Password", 'login.html');
+            exit(); // Exit to prevent further execution
+        }
+    }
+
+    // Check if username exists in tailor table
+    if ($result_tailor->num_rows > 0) {
+        $row = $result_tailor->fetch_assoc();
+        $hashed_password = $row['Password']; // Fetch hashed password from database
+        $name = $row['Name']; // Fetch name of the tailor
+
+        // Verify password for tailor
+        if (password_verify($password, $hashed_password)) {
+            // Password is correct, proceed with login for tailor
+            $_SESSION['username'] = $row['TUsername']; // Store username in session
+            showAlertAndRedirect("Welcome " . $name, 'tailorProfile.php');
+            exit();
+        } else {
+            // Invalid password for tailor
+            showAlertAndRedirect("Invalid Password", 'login.html');
+            exit(); // Exit to prevent further execution
+        }
+    }
+
+    // If username does not exist in any of the tables (admin, customer, or tailor)
+    showAlertAndRedirect("Invalid Username", 'login.html');
+    exit(); // Exit to prevent further execution
+
+    // Close statements and connection
+    $stmt_admin->close();
+    $stmt_customer->close();
+    $stmt_tailor->close();
+    $conn->close();
+}
+
+// Function to show an alert message and redirect
+function showAlertAndRedirect($message, $url = null) {
+    echo "<script type='text/javascript'>
+            alert('$message');";
+    if ($url) {
+        echo "window.location.href='$url';";
+    }
+    echo "</script>";
+}
+?>
