@@ -60,7 +60,7 @@
                     echo "<p><strong>Description:</strong> " . $row["Description"] . "</p>";
                     echo "<p><strong>Status:</strong> " . $row["Status"] . "</p>";
                     echo "<p><strong>Customer Username:</strong> " . $row["CUsername"] . "</p>";
-                    echo "<p><strong>Technician Username:</strong> " . $row["TUsername"] . "</p>";
+                    echo "<p><strong>Tailor's Username:</strong> " . $row["TUsername"] . "</p>";
                 } else {
                     echo "Service details not found";
                 }
