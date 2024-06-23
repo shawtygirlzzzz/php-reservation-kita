@@ -5,7 +5,7 @@ body {
     align-items: flex-start; /* Align children to the left */
     justify-content: center; /* Center children vertically */
     height: 100vh;
-    margin: 0;
+    margin-left: 300px;
     background-color: #f4f4f4;
 }
 
@@ -53,7 +53,7 @@ h2 {
     margin-bottom: 5px;
 }
 
-.login-form input[type="email"],
+.login-form input[type="text"],
 .login-form input[type="password"] {
     padding: 10px;
     margin-bottom: 10px;
@@ -66,18 +66,6 @@ h2 {
     font-weight: bold;
     text-decoration: none;
     margin-bottom: 10px;
-}
-
-.checkbox {
-    
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.checkbox input {
- 
-    margin-right: 5px;
 }
 
 button {
@@ -98,9 +86,10 @@ button {
     right: 0;
     top: 0;
     bottom: 0;
+    margin-right: 200px;
 }
 
 .illustration img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
 } 
