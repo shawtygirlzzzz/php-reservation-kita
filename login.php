@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($password === $plain_text_password) {
             // Password is correct, proceed with login for admin
             $_SESSION['username'] = $row['AUsername']; // Store username in session
-            showAlertAndRedirect("Welcome " . $name, 'admin.html');
+            showAlertAndRedirect("Welcome " . $name, 'admin/index.php');
             exit();
         } else {
             // Invalid password for admin
